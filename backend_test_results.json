@@ -1,0 +1,40 @@
+{
+  "summary": {
+    "tests_run": 5,
+    "tests_passed": 4,
+    "success_rate": 80.0,
+    "timestamp": "2026-01-31T19:34:41.228764"
+  },
+  "test_results": [
+    {
+      "test_name": "API Root Endpoint",
+      "success": true,
+      "details": "Status: 200, Message: LearnWithVijayshree API",
+      "timestamp": "2026-01-31T19:34:37.958264"
+    },
+    {
+      "test_name": "Create Appointment",
+      "success": true,
+      "details": "Appointment created with ID: 4a22728f-f3df-4034-b93a-12ca23677566",
+      "timestamp": "2026-01-31T19:34:38.781684"
+    },
+    {
+      "test_name": "Get Appointments",
+      "success": true,
+      "details": "Retrieved 1 appointments",
+      "timestamp": "2026-01-31T19:34:39.582083"
+    },
+    {
+      "test_name": "Appointment Validation",
+      "success": true,
+      "details": "Correctly rejected invalid data with status: 422",
+      "timestamp": "2026-01-31T19:34:40.404848"
+    },
+    {
+      "test_name": "CORS Headers",
+      "success": false,
+      "details": "No CORS headers found in response",
+      "timestamp": "2026-01-31T19:34:41.227874"
+    }
+  ]
+}
