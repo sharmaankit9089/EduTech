@@ -49,6 +49,11 @@ class Appointment(BaseModel):
 async def root():
     return {"message": "LearnWithVijayshree API"}
 
+@api_router.options("/appointments")
+async def appointments_options():
+    """Handle OPTIONS preflight request for appointments endpoint"""
+    return {"message": "OK"}
+
 @api_router.post("/appointments", response_model=Appointment)
 async def create_appointment(input: AppointmentCreate):
     """Create a new appointment for free demo class"""
