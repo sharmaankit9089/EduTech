@@ -1,0 +1,166 @@
+{
+  "identity": {
+    "persona": "E1: The Anti-AI Designer",
+    "mission": "Create a playful, intellectual, and trustworthy educational platform that breaks the 'boring tutor' stereotype.",
+    "principles": [
+      "Fusion: Mix 'Science Lab' aesthetics with 'Playground' energy.",
+      "Emotion: Every interaction should feel encouraging and smart.",
+      "Clarity: Parents need to trust the process; Students need to be engaged."
+    ]
+  },
+  "typography": {
+    "fonts": [
+      {
+        "family": "Fredoka",
+        "url": "https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap",
+        "usage": "Headings, Big Numbers, CTAs",
+        "class": "font-display"
+      },
+      {
+        "family": "Outfit",
+        "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap",
+        "usage": "Body text, UI elements, Forms",
+        "class": "font-body"
+      }
+    ],
+    "rules": {
+      "headings": "font-display font-semibold tracking-tight text-slate-900",
+      "body": "font-body text-slate-600 leading-relaxed",
+      "accent": "font-display font-bold text-violet-600"
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "name": "Intellectual Violet",
+        "hex": "#7C3AED",
+        "tailwind": "violet-600",
+        "usage": "Primary Buttons, Key Headings, Brand Elements"
+      },
+      "secondary": {
+        "name": "Sunshine Amber",
+        "hex": "#FBBF24",
+        "tailwind": "amber-400",
+        "usage": "Highlights, 'Free Demo' badges, Decorative blobs"
+      },
+      "accent": {
+        "name": "Growth Emerald",
+        "hex": "#10B981",
+        "tailwind": "emerald-500",
+        "usage": "Success states, Science icons, Price tags"
+      },
+      "background": {
+        "name": "Warm Paper",
+        "hex": "#F8FAFC",
+        "tailwind": "slate-50",
+        "usage": "Page background"
+      },
+      "surface": {
+        "name": "Pure White",
+        "hex": "#FFFFFF",
+        "tailwind": "white",
+        "usage": "Cards, Form containers"
+      }
+    },
+    "gradients": {
+      "hero": "bg-gradient-to-br from-violet-50 to-amber-50",
+      "card_hover": "hover:bg-gradient-to-br hover:from-white hover:to-violet-50"
+    }
+  },
+  "layout": {
+    "spacing": {
+      "section_padding": "py-20 md:py-32",
+      "container_padding": "px-6 md:px-12",
+      "element_gap": "gap-8"
+    },
+    "grid_system": {
+      "bento": "grid grid-cols-1 md:grid-cols-3 gap-6",
+      "hero": "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+    },
+    "container": "max-w-7xl mx-auto"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-violet-600 text-white hover:bg-violet-700 rounded-full px-8 py-4 font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-1",
+      "secondary": "bg-white text-violet-600 border-2 border-violet-100 hover:border-violet-200 rounded-full px-8 py-4 font-bold transition-all"
+    },
+    "cards": {
+      "base": "bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 group",
+      "feature": "flex flex-col items-start gap-4"
+    },
+    "inputs": {
+      "base": "bg-slate-50 border-slate-200 focus:border-violet-500 focus:ring-violet-200 rounded-xl p-4 transition-all"
+    }
+  },
+  "visual_enhancers": {
+    "decorations": [
+      "Use abstract 3D shapes (spheres, cubes) floating in background with low opacity",
+      "Use 'squircle' shapes for images instead of standard rectangles",
+      "Add subtle noise texture to the background to reduce digital flatness"
+    ],
+    "motion": {
+      "entrance": "motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-8 duration-700",
+      "hover": "transition-transform duration-300 ease-out"
+    }
+  },
+  "images": {
+    "hero_main": {
+      "url": "https://images.unsplash.com/photo-1613271752699-ede48a285196?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzV8MHwxfHNlYXJjaHwyfHxzY2llbmNlJTIwZXhwZXJpbWVudCUyMGtpZHMlMjBmdW58ZW58MHx8fHwxNzY5ODg3NzM3fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Happy kid doing science experiment",
+      "usage": "Hero section main visual, masked in a blob shape"
+    },
+    "about_tutor": {
+      "url": "https://images.unsplash.com/photo-1629360021730-3d258452c425?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxvbmxpbmUlMjB0dXRvciUyMHRlYWNoaW5nJTIwbGFwdG9wfGVufDB8fHx8MTc2OTg4Nzc0Mnww&ixlib=rb-4.1.0&q=85",
+      "alt": "Tutor teaching student",
+      "usage": "About section or 'Meet the Teacher'"
+    },
+    "student_success": {
+      "url": "https://images.unsplash.com/photo-1574660430686-b2a255cfce68?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxoYXBweSUyMHN0dWRlbnQlMjBzdHVkeWluZyUyMG1hdGh8ZW58MHx8fHwxNzY5ODg3NzMyfDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Focused student reading",
+      "usage": "Testimonials or Success Stories background"
+    },
+    "abstract_bg": {
+      "url": "https://images.unsplash.com/photo-1728652964288-e2a54f061b46?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMG1hdGglMjBzY2llbmNlJTIwc3ltYm9scyUyMDNkfGVufDB8fHx8MTc2OTg4Nzc0N3ww&ixlib=rb-4.1.0&q=85",
+      "alt": "3D Abstract Shapes",
+      "usage": "Subtle background element or decorative floater"
+    }
+  },
+  "seo": {
+    "title": "LearnWithVijayshree | Online K-12 Math & Science Tutor USA",
+    "description": "Expert 1-on-1 online math and science tutoring for K-12 students in USA. Personalized coaching, common core support, and exam prep. Book a free demo class today!",
+    "keywords": [
+      "online tutors in USA",
+      "online teacher",
+      "private 1-On-1 Tutoring",
+      "hire teacher",
+      "math tutor K-12",
+      "science tutor online",
+      "California tutoring",
+      "New York math tutor",
+      "Florida science coach"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "1. SETUP: Install 'lucide-react' for icons. Add the Google Fonts to index.html or import in CSS.",
+    "2. THEME: Update tailwind.config.js to extend the colors with the palette provided above. Do NOT just use default colors.",
+    "3. COMPONENTS: Build a 'Section' component that handles the generous padding (py-20) automatically.",
+    "4. HERO: Create a split layout. Left: Headline + CTA. Right: The 'hero_main' image masked in a playful organic shape (blob).",
+    "5. FORM: The Appointment form is CRITICAL. Make it stand out with a white background, shadow-xl, and the 'Intellectual Violet' border.",
+    "6. WHATSAPP: Add a floating WhatsApp button (green) fixed to the bottom right.",
+    "7. SEO: Inject the keywords naturally into the H1, H2, and About text. Create a 'Locations' footer section listing the target states.",
+    "8. VIDEO: Use a placeholder video component in the Hero or About section with a nice thumbnail.",
+    "9. TESTID: Add data-testid to all interactive elements (buttons, inputs, links)."
+  ],
+  "universal_guidelines": {
+    "do_not": [
+      "Do NOT use generic 'academic blue' (#0000FF).",
+      "Do NOT use standard sharp corners for buttons (use rounded-full or rounded-xl).",
+      "Do NOT make the site look like a corporate dashboard. It must feel like a learning adventure."
+    ],
+    "must_do": [
+      "Use 'Fredoka' font for all headings.",
+      "Ensure high contrast for accessibility (parents need to read easily).",
+      "Make the 'Book Free Demo' button the most prominent element on the page."
+    ]
+  }
+}
