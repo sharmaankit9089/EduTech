@@ -6,7 +6,7 @@ import json
 from datetime import datetime
 
 class LearnWithVijayshreeAPITester:
-    def __init__(self, base_url="https://vijayshree-edu.preview.emergentagent.com"):
+    def __init__(self, base_url="https://seo-tutors-online.preview.emergentagent.com"):
         self.base_url = base_url
         self.api_url = f"{base_url}/api"
         self.tests_run = 0
