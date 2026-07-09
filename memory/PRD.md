@@ -10,7 +10,8 @@ Students (K-12) and their parents, globally.
 React 19 (CRA/craco) + Tailwind + shadcn/ui, FastAPI backend, MongoDB (Motor). react-router-dom v7.
 
 ## Implemented (updated June 9, 2026)
-- **Landing page** (`LandingPage.js`): hero, About + intro video, Courses, Global Locations, Blog previews, appointment form, footer.
+- **Dedicated pages** (react-router): `/courses` (index) + `/courses/:id` (per-course detail with intro, highlights, grade syllabus, CTAs), `/locations` (index) + `/locations/:id` (per-region detail with intro, popular areas, available courses, CTAs). Shared `Navbar` + `Footer` across all pages.
+- **Landing page** (`LandingPage.js`): hero, About + intro video, Courses section (links to detail + "Explore All Courses"), Global Locations section (links to detail + "View All Locations"), Blog previews, appointment form, footer.
 - **Courses (5)**: Mathematics, Science, English, Hindi, Phonics — each with 4 grade/level cards & syllabus (`data/content.js`, rendered via `CourseBlock`).
 - **Global Locations (5 regions)**: USA, Canada, Europe, Australia, Dubai — each with popular area names (rendered via `RegionCard`).
 - **Intro video**: real `<video>` element in About section (artifact mp4).
@@ -23,7 +24,8 @@ React 19 (CRA/craco) + Tailwind + shadcn/ui, FastAPI backend, MongoDB (Motor). r
 - `appointments`: {id, name, email, phone, message, created_at, status}
 
 ## Testing
-- iteration_2.json: 100% backend (5/5 pytest) + 100% frontend flows. No open bugs.
+- iteration_2.json: 100% backend (5/5) + frontend.
+- iteration_3.json: 100% frontend for new Courses/Locations pages & navigation, 0 console errors.
 
 ## Backlog / Future (P1/P2)
 - P1: Email notification to tutor on form submit (needs Resend/SendGrid integration).
