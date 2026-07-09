@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, MessageSquare } from 'lucide-react';
 import { Button } from './ui/button';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import { blogPosts } from '../data/content';
+import { CONTACT } from '../data/contact';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -34,6 +37,7 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Navbar />
       <article className="max-w-3xl mx-auto px-6 md:px-12 py-16 md:py-24">
         <Link to="/" className="inline-flex items-center gap-2 font-display font-semibold text-violet-600 hover:text-violet-700 mb-8" data-testid="blog-back-link">
           <ArrowLeft className="w-5 h-5" /> Back to Home
@@ -99,7 +103,7 @@ const BlogPost = () => {
 
       {/* Floating WhatsApp */}
       <a
-        href="https://wa.me/919315371167"
+        href={CONTACT.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="floating-whatsapp bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl"
@@ -108,6 +112,7 @@ const BlogPost = () => {
       >
         <MessageSquare className="w-7 h-7" />
       </a>
+      <Footer />
     </div>
   );
 };

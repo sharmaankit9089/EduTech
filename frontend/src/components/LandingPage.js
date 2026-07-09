@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, GraduationCap, Users, Award, Mail, Phone, MessageSquare, Send, CheckCircle, Star, TrendingUp, Clock, MapPin, Globe } from 'lucide-react';
+import { BookOpen, GraduationCap, Users, Award, MessageSquare, Send, CheckCircle, Star, TrendingUp, Clock, MapPin, Globe, ArrowRight } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Card } from './ui/card';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import { courses, regions, blogPosts } from '../data/content';
+import { colorClasses } from '../lib/courseColors';
+import { CONTACT } from '../data/contact';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
-const WHATSAPP_URL = 'https://wa.me/919315371167';
-const CONTACT_EMAIL = 'tutor@learnwithvijayshree.com';
 const VIDEO_URL = 'https://customer-assets.emergentagent.com/job_d39a7962-5e01-4fc1-b6eb-54fa0a96b91c/artifacts/1rvb74bz_Learnwithvijayshree%20%281%29.mp4';
-
-const colorClasses = {
-  violet: { badge: 'bg-violet-100 text-violet-700', card: 'from-violet-50 to-white border-violet-100', grade: 'text-violet-600', dot: 'bg-violet-500' },
-  emerald: { badge: 'bg-emerald-100 text-emerald-700', card: 'from-emerald-50 to-white border-emerald-100', grade: 'text-emerald-600', dot: 'bg-emerald-500' },
-  sky: { badge: 'bg-sky-100 text-sky-700', card: 'from-sky-50 to-white border-sky-100', grade: 'text-sky-600', dot: 'bg-sky-500' },
-  amber: { badge: 'bg-amber-100 text-amber-700', card: 'from-amber-50 to-white border-amber-100', grade: 'text-amber-600', dot: 'bg-amber-500' },
-  rose: { badge: 'bg-rose-100 text-rose-700', card: 'from-rose-50 to-white border-rose-100', grade: 'text-rose-600', dot: 'bg-rose-500' },
-};
 
 const CourseBlock = ({ course }) => {
   const c = colorClasses[course.color];
@@ -32,7 +26,10 @@ const CourseBlock = ({ course }) => {
         <h3 className="font-display font-bold text-3xl text-slate-900 flex items-center gap-3">
           <span className={`${c.badge} p-3 rounded-2xl font-display`}>{course.name}</span>
         </h3>
-        <p className="font-body text-slate-500">{course.tagline}</p>
+        <p className="font-body text-slate-500 flex-1">{course.tagline}</p>
+        <Link to={`/courses/${course.id}`} className={`inline-flex items-center gap-1 font-display font-semibold ${c.grade} whitespace-nowrap`} data-testid={`course-details-link-${course.id}`}>
+          Full details <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {levels.map((item, index) => (
@@ -49,21 +46,26 @@ const CourseBlock = ({ course }) => {
 const RegionCard = ({ region }) => {
   const areas = region.areas;
   return (
-    <Card className="grade-card bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8" data-testid={`region-${region.id}`}>
-      <div className="flex items-center gap-3 mb-4">
-        <span className="text-3xl">{region.flag}</span>
-        <h3 className="font-display font-bold text-2xl text-white">{region.name}</h3>
-      </div>
-      <p className="font-body text-slate-300 mb-4 text-sm">{region.blurb}</p>
-      <ul className="space-y-2">
-        {areas.map((area, i) => (
-          <li key={i} className="flex items-start gap-2 font-body text-slate-200 text-sm">
-            <MapPin className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-            <span>{area}</span>
-          </li>
-        ))}
-      </ul>
-    </Card>
+    <Link to={`/locations/${region.id}`} className="group block" data-testid={`region-${region.id}`}>
+      <Card className="grade-card bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 h-full hover:bg-white/10">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">{region.flag}</span>
+          <h3 className="font-display font-bold text-2xl text-white group-hover:text-amber-400">{region.name}</h3>
+        </div>
+        <p className="font-body text-slate-300 mb-4 text-sm">{region.blurb}</p>
+        <ul className="space-y-2 mb-4">
+          {areas.map((area, i) => (
+            <li key={i} className="flex items-start gap-2 font-body text-slate-200 text-sm">
+              <MapPin className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+              <span>{area}</span>
+            </li>
+          ))}
+        </ul>
+        <span className="inline-flex items-center gap-1 font-display font-semibold text-amber-400">
+          Explore {region.name} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </span>
+      </Card>
+    </Link>
   );
 };
 
@@ -103,9 +105,10 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Navbar />
       {/* Floating WhatsApp Button */}
       <a
-        href={WHATSAPP_URL}
+        href={CONTACT.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="floating-whatsapp bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl"
@@ -249,6 +252,12 @@ const LandingPage = () => {
               <CourseBlock key={course.id} course={course} />
             ))}
           </div>
+
+          <div className="text-center mt-14">
+            <Link to="/courses" className="inline-flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white rounded-full px-8 py-4 text-lg font-display font-bold transition-colors" data-testid="explore-all-courses">
+              Explore All Courses <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -268,6 +277,12 @@ const LandingPage = () => {
             {regions.map((region) => (
               <RegionCard key={region.id} region={region} />
             ))}
+          </div>
+
+          <div className="text-center mt-14">
+            <Link to="/locations" className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-slate-900 rounded-full px-8 py-4 text-lg font-display font-bold transition-colors" data-testid="view-all-locations">
+              View All Locations <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -354,55 +369,7 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-16 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div className="md:col-span-2">
-              <h3 className="font-display font-bold text-2xl mb-4">LearnWithVijayshree</h3>
-              <p className="font-body text-slate-300 mb-4 max-w-md">
-                Expert online teacher offering private 1-on-1 tutoring in Math, Science, English, Hindi & Phonics for K-12 students worldwide.
-              </p>
-              <div className="flex items-center gap-3 mb-2">
-                <Mail className="w-5 h-5 text-slate-400" />
-                <a href={`mailto:${CONTACT_EMAIL}`} className="font-body text-slate-300 hover:text-amber-400" data-testid="footer-email">{CONTACT_EMAIL}</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-slate-400" />
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="font-body text-slate-300 hover:text-amber-400" data-testid="footer-phone">+91 93153 71167 (WhatsApp)</a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-display font-bold text-xl mb-4">Courses</h3>
-              <ul className="space-y-2 font-body text-slate-300">
-                {courses.map((c) => (
-                  <li key={c.id}><button onClick={() => scrollTo('courses')} className="hover:text-amber-400 transition-colors">{c.name}</button></li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-display font-bold text-xl mb-4">
-                <MapPin className="w-5 h-5 inline-block mr-2" />
-                Serving Worldwide
-              </h3>
-              <div className="font-body text-slate-300 space-y-1 text-sm">
-                <p>USA — California, New York, Florida, Washington, Alaska</p>
-                <p>Canada — Toronto, Vancouver, Montreal</p>
-                <p>Europe — London, Paris, Berlin</p>
-                <p>Australia — Sydney, Melbourne</p>
-                <p>Dubai — Marina, Downtown, Jumeirah</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-slate-800 pt-8 text-center">
-            <p className="font-body text-slate-400">
-              © 2026 LearnWithVijayshree. All rights reserved. | Private 1-On-1 Online Tutoring | Hire an Online Teacher — Math, Science, English, Hindi & Phonics
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

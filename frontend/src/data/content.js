@@ -6,6 +6,15 @@ export const courses = [
     name: 'Mathematics',
     color: 'violet',
     tagline: 'Build strong number sense and problem-solving confidence.',
+    image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200',
+    intro:
+      'Our online Mathematics tutoring takes students from early number sense all the way to advanced calculus. Every lesson is a private 1-on-1 session, tailored to your child\'s pace, curriculum and goals — whether that\'s catching up, keeping up, or getting ahead.',
+    highlights: [
+      'Common Core aligned curriculum for US students',
+      'Step-by-step problem solving that builds true understanding',
+      'Exam & test prep (school tests, SAT, competitive math)',
+      'Weekly progress updates for parents',
+    ],
     levels: [
       { grade: 'K-2', topics: 'Number sense, Basic addition & subtraction, Shapes & patterns, Counting' },
       { grade: '3-5', topics: 'Multiplication & division, Fractions, Decimals, Geometry basics, Word problems' },
@@ -18,6 +27,15 @@ export const courses = [
     name: 'Science',
     color: 'emerald',
     tagline: 'Hands-on, curiosity-driven learning across all branches.',
+    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200',
+    intro:
+      'Science comes alive in our 1-on-1 online lessons. From simple experiments for young learners to Biology, Chemistry and Physics for high schoolers, we make complex concepts simple, visual and memorable.',
+    highlights: [
+      'Concept-first teaching, not rote memorisation',
+      'Diagrams, simulations and real-world examples',
+      'Board & standardized exam preparation',
+      'Covers Biology, Chemistry, Physics & Earth Science',
+    ],
     levels: [
       { grade: 'K-2', topics: 'Life science basics, Weather & seasons, Five senses, Simple experiments' },
       { grade: '3-5', topics: 'Earth science, Matter & energy, Life cycles, Scientific method' },
@@ -30,6 +48,15 @@ export const courses = [
     name: 'English',
     color: 'sky',
     tagline: 'Read, write, and communicate with clarity and confidence.',
+    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200',
+    intro:
+      'Strong English skills open every door. Our online English tutoring builds reading comprehension, grammar, writing and confident communication — from first words to college-ready essays and exam prep.',
+    highlights: [
+      'Reading comprehension & vocabulary building',
+      'Grammar, creative and academic writing',
+      'Public speaking and confidence building',
+      'Exam prep (school English, SAT, TOEFL, IELTS)',
+    ],
     levels: [
       { grade: 'K-2', topics: 'Alphabet, Early reading, Sight words, Sentence building, Storytelling' },
       { grade: '3-5', topics: 'Reading comprehension, Grammar, Paragraph writing, Vocabulary building' },
@@ -42,6 +69,15 @@ export const courses = [
     name: 'Hindi',
     color: 'amber',
     tagline: 'Master reading, writing and grammar with a native tutor.',
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200',
+    intro:
+      'Learn Hindi with a native-speaking online tutor — perfect for heritage learners, expat families and students following Indian curricula. We cover the Devanagari script, grammar (vyakaran), reading, writing and composition.',
+    highlights: [
+      'Devanagari script (varnamala) & matras from scratch',
+      'Grammar (vyakaran), composition & comprehension',
+      'Great for NRI / expat families worldwide',
+      'CBSE / ICSE board exam preparation',
+    ],
     levels: [
       { grade: 'K-2', topics: 'Varnamala (अ-ज्ञ), Matras, Simple words, Basic reading' },
       { grade: '3-5', topics: 'Reading & writing, Sentence formation, Vocabulary, Short stories' },
@@ -54,6 +90,15 @@ export const courses = [
     name: 'Phonics',
     color: 'rose',
     tagline: 'The foundation of confident, fluent reading for young learners.',
+    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200',
+    intro:
+      'Phonics is the bridge between letters and reading. Our structured, playful phonics program helps young learners recognise sounds, blend them into words and become confident, fluent readers — one joyful step at a time.',
+    highlights: [
+      'Structured, systematic synthetic phonics',
+      'Sounds → blending → sight words → fluency',
+      'Playful, engaging lessons for young learners',
+      'Perfect head-start for reading and spelling',
+    ],
     levels: [
       { grade: 'Level 1', topics: 'Letter sounds, Single-letter phonics, Recognition' },
       { grade: 'Level 2', topics: 'Blending sounds, CVC words, Digraphs (sh, ch, th)' },
@@ -69,6 +114,8 @@ export const regions = [
     name: 'United States',
     flag: '🇺🇸',
     blurb: 'Trusted online tutors across the USA for K-12 Math, Science & English.',
+    intro:
+      'LearnWithVijayshree provides private 1-on-1 online tutoring to students across all 50 US states. With flexible evening and weekend slots across every US time zone, hiring a top online teacher for your child has never been easier — no commute, no hassle, just results.',
     areas: [
       'California (Los Angeles, San Francisco, San Diego)',
       'New York (NYC, Brooklyn, Buffalo)',
@@ -82,6 +129,8 @@ export const regions = [
     name: 'Canada',
     flag: '🇨🇦',
     blurb: 'Private 1-on-1 online tutoring for Canadian students, coast to coast.',
+    intro:
+      'From Ontario to British Columbia, Canadian families choose LearnWithVijayshree for personalised online tutoring in Math, Science and English. Lessons are scheduled around school timetables and available across all Canadian provinces.',
     areas: [
       'Toronto, Ontario',
       'Vancouver, British Columbia',
@@ -95,6 +144,8 @@ export const regions = [
     name: 'Europe',
     flag: '🇪🇺',
     blurb: 'Flexible online lessons across European time zones.',
+    intro:
+      'Students across Europe learn with us from the comfort of home. Whether you follow the British, IB or a national curriculum, our online teacher adapts every 1-on-1 session to your needs, with convenient CET/GMT scheduling.',
     areas: [
       'London, United Kingdom',
       'Paris, France',
@@ -108,6 +159,8 @@ export const regions = [
     name: 'Australia',
     flag: '🇦🇺',
     blurb: 'Expert online teachers for Australian curriculum and beyond.',
+    intro:
+      'Australian families trust LearnWithVijayshree for reliable, engaging online tutoring. We support the Australian Curriculum and NAPLAN preparation, with lesson times that fit neatly around the school day across every state.',
     areas: [
       'Sydney, New South Wales',
       'Melbourne, Victoria',
@@ -121,6 +174,8 @@ export const regions = [
     name: 'Dubai (UAE)',
     flag: '🇦🇪',
     blurb: 'Hire a private online tutor for students across the Emirates.',
+    intro:
+      'In Dubai and across the UAE, parents hire our online teacher for private 1-on-1 support in Math, Science, English and Hindi. We work with British, American, IB and CBSE curricula common in the region, with flexible Gulf-time scheduling.',
     areas: [
       'Dubai Marina',
       'Downtown Dubai',
