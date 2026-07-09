@@ -14,9 +14,28 @@ const LocationDetailPage = () => {
 
   useEffect(() => {
     if (region) {
-      document.title = `Online Tutoring in ${region.name} — Math, Science, English, Hindi & Phonics | LearnWithVijayshree`;
+      const pageTitle = `Online Tutoring in ${region.name} — Math, Science, English, Hindi & Phonics | LearnWithVijayshree`;
+      const pageDesc = `Private 1-on-1 online tutoring for students in ${region.name}. ${region.blurb} Book a free demo class today.`;
+      const pageUrl = `https://learnwithvijayshree.com/locations/${region.id}`;
+
+      document.title = pageTitle;
+
       const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute('content', `Private 1-on-1 online tutoring for students in ${region.name}. ${region.blurb} Book a free demo class today.`);
+      if (meta) meta.setAttribute('content', pageDesc);
+
+      // Canonical URL
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+      canonical.href = pageUrl;
+
+      // OG tags
+      const setMeta = (prop, val) => {
+        let el = document.querySelector(`meta[property="${prop}"]`);
+        if (el) el.setAttribute('content', val);
+      };
+      setMeta('og:title', pageTitle);
+      setMeta('og:description', pageDesc);
+      setMeta('og:url', pageUrl);
     }
     window.scrollTo(0, 0);
   }, [region]);

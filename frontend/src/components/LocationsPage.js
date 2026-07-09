@@ -37,6 +37,8 @@ const LocationsPage = () => {
     document.title = 'Online Tutoring Worldwide — USA, Canada, Europe, Australia & Dubai | LearnWithVijayshree';
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', 'Private 1-on-1 online tutoring for students in the USA, Canada, Europe, Australia and Dubai. Hire an expert online teacher in Math, Science, English, Hindi & Phonics. Book a free demo.');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = 'https://learnwithvijayshree.com/locations';
     window.scrollTo(0, 0);
   }, []);
 

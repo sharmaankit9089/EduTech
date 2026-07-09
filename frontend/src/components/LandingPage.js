@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, GraduationCap, Users, Award, MessageSquare, Send, CheckCircle, Star, TrendingUp, Clock, MapPin, Globe, ArrowRight } from 'lucide-react';
-import axios from 'axios';
+
 import { toast } from 'sonner';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -13,9 +13,8 @@ import { courses, regions, blogPosts } from '../data/content';
 import { colorClasses } from '../lib/courseColors';
 import { CONTACT } from '../data/contact';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-const VIDEO_URL = 'https://customer-assets.emergentagent.com/job_d39a7962-5e01-4fc1-b6eb-54fa0a96b91c/artifacts/1rvb74bz_Learnwithvijayshree%20%281%29.mp4';
+
+const VIDEO_URL = '/media/Video.mp4';
 
 const CourseBlock = ({ course }) => {
   const c = colorClasses[course.color];
@@ -84,21 +83,23 @@ const LandingPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    try {
-      const response = await axios.post(`${API}/appointments`, formData);
-      if (response.data) {
-        toast.success('Appointment request submitted successfully! We\'ll contact you soon.');
-        setFormData({ name: '', email: '', phone: '', message: '' });
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error('Failed to submit appointment. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+
+    const waNumber = '919315371167';
+    const message =
+      `Hello! I'd like to book a free demo class.%0A%0A` +
+      `*Name:* ${formData.name}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*Phone:* ${formData.phone}%0A` +
+      `*Message:* ${formData.message}`;
+
+    window.open(`https://wa.me/${waNumber}?text=${message}`, '_blank');
+
+    toast.success('Redirecting to WhatsApp! We\'ll get back to you soon.');
+    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(false);
   };
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -205,8 +206,9 @@ const LandingPage = () => {
                 src={VIDEO_URL}
                 controls
                 playsInline
-                preload="metadata"
-                className="w-full h-auto aspect-video bg-black"
+                preload="none"
+                poster="/media/Logo1.png"
+                className="w-full h-auto aspect-video bg-slate-800"
                 data-testid="intro-video"
               >
                 Your browser does not support the video tag.
@@ -302,7 +304,7 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {blogPosts.map((post, index) => (
               <Card key={post.slug} className="grade-card bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg flex flex-col" data-testid={`blog-card-${index}`}>
-                <img src={post.image} alt={post.title} className="w-full h-44 object-cover" />
+                <img src={post.image} alt={post.title} className="w-full h-44 object-cover" loading="lazy" decoding="async" width="400" height="176" />
                 <div className="p-6 flex flex-col flex-1">
                   <div className="font-body text-sm text-amber-500 font-semibold mb-2">{post.date} · {post.readTime}</div>
                   <h3 className="font-display font-bold text-lg text-slate-900 mb-3">{post.title}</h3>

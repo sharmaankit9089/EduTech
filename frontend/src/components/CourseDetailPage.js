@@ -15,9 +15,29 @@ const CourseDetailPage = () => {
 
   useEffect(() => {
     if (course) {
-      document.title = `Online ${course.name} Tutoring (K-12) | LearnWithVijayshree`;
+      const pageTitle = `Online ${course.name} Tutoring (K-12) | LearnWithVijayshree`;
+      const pageDesc = `Private 1-on-1 online ${course.name} tutoring for K-12 students. ${course.tagline} Book a free demo class today.`;
+      const pageUrl = `https://learnwithvijayshree.com/courses/${course.id}`;
+
+      document.title = pageTitle;
+
+      // Meta description
       const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute('content', `Private 1-on-1 online ${course.name} tutoring for K-12 students. ${course.tagline} Book a free demo class today.`);
+      if (meta) meta.setAttribute('content', pageDesc);
+
+      // Canonical URL
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+      canonical.href = pageUrl;
+
+      // OG tags
+      const setMeta = (prop, val) => {
+        let el = document.querySelector(`meta[property="${prop}"]`);
+        if (el) el.setAttribute('content', val);
+      };
+      setMeta('og:title', pageTitle);
+      setMeta('og:description', pageDesc);
+      setMeta('og:url', pageUrl);
     }
     window.scrollTo(0, 0);
   }, [course]);

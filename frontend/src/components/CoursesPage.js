@@ -13,7 +13,7 @@ const CourseCard = ({ course }) => {
     <Link to={`/courses/${course.id}`} className="group" data-testid={`courses-card-${course.id}`}>
       <Card className="grade-card bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl h-full flex flex-col">
         <div className="h-44 overflow-hidden">
-          <img src={course.image} alt={`${course.name} online tutoring`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img src={course.image} alt={`${course.name} online tutoring`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
         </div>
         <div className="p-6 flex flex-col flex-1">
           <span className={`${c.badge} self-start px-3 py-1 rounded-full text-xs font-display font-bold mb-3`}>Grades covered: {course.levels.length}</span>
@@ -33,6 +33,8 @@ const CoursesPage = () => {
     document.title = 'Online Courses — Math, Science, English, Hindi & Phonics | LearnWithVijayshree';
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute('content', 'Explore our online tutoring courses: Mathematics, Science, English, Hindi and Phonics for K-12 students. Private 1-on-1 lessons with grade-wise syllabus. Book a free demo.');
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = 'https://learnwithvijayshree.com/courses';
     window.scrollTo(0, 0);
   }, []);
 

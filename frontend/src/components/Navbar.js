@@ -21,9 +21,9 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100" data-testid="navbar">
-      <nav className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        <Link to="/" className="font-display font-bold text-xl text-slate-900" data-testid="nav-logo">
-          Learn<span className="text-violet-600">With</span>Vijayshree
+      <nav className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+        <Link to="/" className="flex items-center py-1" data-testid="nav-logo">
+          <img src="/media/Logo1.png" alt="LearnWithVijayshree Logo" className="h-20 w-auto object-contain" />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

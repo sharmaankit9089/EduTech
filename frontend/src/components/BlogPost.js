@@ -14,11 +14,56 @@ const BlogPost = () => {
 
   useEffect(() => {
     if (post) {
-      document.title = `${post.title} | LearnWithVijayshree Blog`;
+      const pageTitle = `${post.title} | LearnWithVijayshree Blog`;
+      const pageDesc = post.excerpt;
+      const pageUrl = `https://learnwithvijayshree.com/blog/${post.slug}`;
+
+      document.title = pageTitle;
+
       const meta = document.querySelector('meta[name="description"]');
-      if (meta) meta.setAttribute('content', post.excerpt);
+      if (meta) meta.setAttribute('content', pageDesc);
+
+      // Canonical URL
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+      canonical.href = pageUrl;
+
+      // OG tags
+      const setMeta = (prop, val) => {
+        let el = document.querySelector(`meta[property="${prop}"]`);
+        if (el) el.setAttribute('content', val);
+      };
+      setMeta('og:title', pageTitle);
+      setMeta('og:description', pageDesc);
+      setMeta('og:url', pageUrl);
+      setMeta('og:type', 'article');
+      if (post.image) setMeta('og:image', post.image);
+
+      // Article structured data
+      const existingSchema = document.getElementById('blog-article-schema');
+      if (existingSchema) existingSchema.remove();
+      const schema = document.createElement('script');
+      schema.id = 'blog-article-schema';
+      schema.type = 'application/ld+json';
+      schema.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post.title,
+        "description": post.excerpt,
+        "image": post.image,
+        "datePublished": post.date,
+        "author": { "@type": "Person", "name": "Vijayshree" },
+        "publisher": { "@type": "EducationalOrganization", "name": "LearnWithVijayshree", "url": "https://learnwithvijayshree.com" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl }
+      });
+      document.head.appendChild(schema);
     }
     window.scrollTo(0, 0);
+
+    return () => {
+      const s = document.getElementById('blog-article-schema');
+      if (s) s.remove();
+    };
   }, [post]);
 
   if (!post) {
