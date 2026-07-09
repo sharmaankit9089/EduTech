@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BookOpen, GraduationCap, Users, Award, MessageSquare, Send, CheckCircle, Star, TrendingUp, Clock, MapPin, Globe, ArrowRight } from 'lucide-react';
 
 import { toast } from 'sonner';
@@ -71,13 +71,14 @@ const RegionCard = ({ region }) => {
 const LandingPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash);
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
       if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 300);
     }
-  }, []);
+  }, [location.hash]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
